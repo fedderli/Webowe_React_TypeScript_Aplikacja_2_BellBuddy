@@ -6,8 +6,19 @@ interface PropsStudentList {
 }
 
 const StudentList = ({ studentObject }: PropsStudentList) => {
-    // Maintain student list inside the component using state
-    const [studentList, setStudentList] = useState<MyStudentItem[]>([]);
+
+    const [studentList, setStudentList] = useState<MyStudentItem[]>(() => {
+        const saved = localStorage.getItem("studentList");
+        return saved ? JSON.parse(saved) : [];
+    });
+
+    const [presenceStatus, setPresenceStatus] = useState<{ [studentName: string]: string }>(() => {
+        const saved = localStorage.getItem("presenceStatus");
+        return saved ? JSON.parse(saved) : {};
+    });
+
+
+
 
     useEffect(() => {
         if (studentObject.studentName) {
@@ -15,14 +26,51 @@ const StudentList = ({ studentObject }: PropsStudentList) => {
         }
     }, [studentObject]);
 
+    const handleChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+        setPresenceStatus(prevStatus => ({
+            ...prevStatus,
+            [index]: e.target.checked ? "Obecny" : "Nieobecny"
+
+
+        }));
+    };
+
+    let PresentStudent = 0 ;
+    for (const student in presenceStatus) {
+        if(presenceStatus[student] === "Obecny") {
+            PresentStudent++;
+        }
+    }
+
+    useEffect(() => {
+        localStorage.setItem("studentList", JSON.stringify(studentList));
+    }, [studentList]);
+
+
+    useEffect(() => {
+        localStorage.setItem("presenceStatus", JSON.stringify(presenceStatus));
+    }, [presenceStatus]);
+
+
+
     return (
         <>
             {studentList.map((student, index) => (
                 <div key={index}>
                     <p>Name: {student.studentName}</p>
-                    <p>Present: {student.isPresent ? "Yes" : "No"}</p>
+                    <p>
+                        <input
+                            type="checkbox"
+                            checked={presenceStatus[index] === "Obecny"}
+                            onChange={(e) => handleChange(index, e)}
+
+                        />
+                        {presenceStatus[index] || "Nieobecny"}
+                    </p>
+
                 </div>
             ))}
+            <p>ilosc obecnych uczniów : {PresentStudent}</p>
         </>
     );
 };

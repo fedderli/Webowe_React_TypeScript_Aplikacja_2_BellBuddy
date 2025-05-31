@@ -15,7 +15,7 @@ const StudentItem = ({name ,sendStudentItem}: PropsStudentItem) => {
         if (name) {
             const student: MyStudentItem = {
                 studentName: name,
-                isPresent: true,
+                isPresent: false
             };
             sendStudentItem(student);
         }

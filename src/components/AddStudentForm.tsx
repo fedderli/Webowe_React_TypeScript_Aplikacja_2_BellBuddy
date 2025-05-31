@@ -11,7 +11,7 @@ const AddStudentForm = ({sendString}: PropsAddStudentForm) => {
     return (
         <>
             <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)}/>
-            <button onClick={() => sendString(name)}>Add Student</button>
+            <button onClick={() => {sendString(name); setName('')}} >Add Student</button>
         </>
     )
 }

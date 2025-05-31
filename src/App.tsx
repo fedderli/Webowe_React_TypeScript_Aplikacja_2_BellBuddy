@@ -26,13 +26,21 @@ function App() {
         setStudentObject(MyStudentObject);
     }
 
+    const [showClock, setShowClock] = useState(true);
+    const [showAddForm, setShowAddForm] = useState(true);
+    const [showStudentList, setShowStudentList] = useState(true);
+
 
     return (
     <>
-        <Clock/>
-        <AddStudentForm sendString={getStudents}/>
-        <StudentItem name={studentName} sendStudentItem={getStudentObject}/>
-        <StudentList studentObject={studentObject}/>
+        <input type="checkbox" checked={showClock} onChange={() => setShowClock(!showClock)} /> Clock<br />
+        <input type="checkbox" checked={showAddForm} onChange={() => setShowAddForm(!showAddForm)} /> AddStudentForm<br />
+        <input type="checkbox" checked={showStudentList} onChange={() => setShowStudentList(!showStudentList)} /> StudentList<br />
+
+        {showClock && <Clock/>}
+        {showAddForm && <AddStudentForm sendString={getStudents}/> }
+         <StudentItem name={studentName} sendStudentItem={getStudentObject}/>
+        {showStudentList && <StudentList studentObject={studentObject}/> }
 
 
     </>
