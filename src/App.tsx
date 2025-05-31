@@ -33,9 +33,9 @@ function App() {
 
     return (
     <>
-        <input type="checkbox" checked={showClock} onChange={() => setShowClock(!showClock)} /> Clock<br />
-        <input type="checkbox" checked={showAddForm} onChange={() => setShowAddForm(!showAddForm)} /> AddStudentForm<br />
-        <input type="checkbox" checked={showStudentList} onChange={() => setShowStudentList(!showStudentList)} /> StudentList<br />
+        <input type="checkbox" onChange={() => setShowClock(!showClock)} /> Clock<br />
+        <input type="checkbox" onChange={() => setShowAddForm(!showAddForm)} /> AddStudentForm<br />
+        <input type="checkbox" onChange={() => setShowStudentList(!showStudentList)} /> StudentList<br />
 
         {showClock && <Clock/>}
         {showAddForm && <AddStudentForm sendString={getStudents}/> }
