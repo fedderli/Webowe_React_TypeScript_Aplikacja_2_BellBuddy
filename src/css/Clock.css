@@ -1,0 +1,21 @@
+﻿.clock-wrapper {
+    background: bisque;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    height: 30%;
+}
+
+.clock-wrapper p {
+    margin: 6px;
+}
+
+.clock-wrapper p:nth-child(5) {
+    margin: 15px;
+    font-size: 120%;
+    font-weight: bold;
+}

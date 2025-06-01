@@ -1,0 +1,22 @@
+﻿.student-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    background-color: #ada865;
+    flex-wrap: wrap;
+    height: 750px;
+}
+
+.student-list-wrapper div {
+    margin: 5px;
+}
+
+.is-present-amount {
+    font-size: 125%;
+    font-weight: bold;
+}
+
+.student-list-wrapper div p input {
+    margin-left: 25px;
+}

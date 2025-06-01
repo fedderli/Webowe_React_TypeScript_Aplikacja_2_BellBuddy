@@ -1,5 +1,6 @@
 import {useEffect} from "react";
 import {useState} from "react";
+import "../css/Clock.css"
 
 const Clock = () => {
 
@@ -104,11 +105,13 @@ const Clock = () => {
 
     return (
         <>
-            <p> Polska : {time}</p>
-            <p> Japonia : {JPtime}</p>
-            <p> Maroko : {MAtime}</p>
-            <p> USA (Nowy Jork) : {NJtime}</p>
-            <p> Pozostały czas : {formatTime(timeLeft)}</p>
+            <section className="clock-wrapper">
+                <p> Polska : {time}</p>
+                <p> Japonia : {JPtime}</p>
+                <p> Maroko : {MAtime}</p>
+                <p> USA (Nowy Jork) : {NJtime}</p>
+                <p> Pozostały czas : {formatTime(timeLeft)}</p>
+            </section>
         </>
     )
 }

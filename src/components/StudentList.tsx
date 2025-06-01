@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { MyStudentItem } from "./StudentItem.tsx";
+import "../css/StudentList.css"
 
 interface PropsStudentList {
     studentObject: MyStudentItem;
@@ -55,22 +56,25 @@ const StudentList = ({ studentObject }: PropsStudentList) => {
 
     return (
         <>
-            {studentList.map((student, index) => (
-                <div key={index}>
-                    <p>Name: {student.studentName}</p>
-                    <p>
-                        <input
-                            type="checkbox"
-                            checked={presenceStatus[index] === "Obecny"}
-                            onChange={(e) => handleChange(index, e)}
+            <section className="student-list-wrapper">
+                {studentList.map((student, index) => (
+                    <div key={index}>
+                        <p>Name: {student.studentName}
 
-                        />
-                        {presenceStatus[index] || "Nieobecny"}
-                    </p>
+                            <input
+                                type="checkbox"
+                                checked={presenceStatus[index] === "Obecny"}
+                                onChange={(e) => handleChange(index, e)}
 
-                </div>
-            ))}
-            <p>ilosc obecnych uczniów : {PresentStudent}</p>
+                            />
+                            {presenceStatus[index] || "Nieobecny"}
+                        </p>
+
+                    </div>
+                ))}
+                <p className={"is-present-amount"}>ilosc obecnych uczniów : {PresentStudent}</p>
+            </section>
+
         </>
     );
 };

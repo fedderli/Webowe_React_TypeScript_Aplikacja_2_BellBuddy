@@ -33,9 +33,12 @@ function App() {
 
     return (
     <>
-        <input type="checkbox" checked={showClock} onChange={() => setShowClock(!showClock)} /> Clock<br />
-        <input type="checkbox" checked={showAddForm} onChange={() => setShowAddForm(!showAddForm)} /> AddStudentForm<br />
-        <input type="checkbox" checked={showStudentList} onChange={() => setShowStudentList(!showStudentList)} /> StudentList<br />
+        <section className="show-components-wrapper">
+            <p><input type="checkbox" checked={showClock} onChange={() => setShowClock(!showClock)} /> Clock</p>
+            <p><input type="checkbox" checked={showAddForm} onChange={() => setShowAddForm(!showAddForm)} /> AddStudentForm</p>
+            <p><input type="checkbox" checked={showStudentList} onChange={() => setShowStudentList(!showStudentList)} /> StudentList</p>
+        </section>
+
 
         {showClock && <Clock/>}
         {showAddForm && <AddStudentForm sendString={getStudents}/> }
